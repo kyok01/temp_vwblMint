@@ -1,5 +1,5 @@
 const { 
-    VWBL,
+    VWBLEthers,
     ManageKeyType, 
     UploadContentType, 
     UploadMetadataType
@@ -19,7 +19,8 @@ const privateKey = process.env.PRIVATE_KEY;
 const ethProvider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.maticvigil.com/');
 const ethSigner = new ethers.Wallet(privateKey, ethProvider);
 
-const vwbl = new VWBL({
+
+const vwbl = new VWBLEthers({
     ethersProvider: ethProvider, // ethers.js provider instance
     ethersSigner: ethSigner, // ethers.js signer instance
     contractAddress: process.env.NFT_CONTRACT_ADDRESS,                 // VWBL nft's contract address
@@ -32,8 +33,8 @@ const vwbl = new VWBL({
  const data = {
     title: 'node-html-upload-test',
     description: 'test',
-    thumbnail: fs.readFileSync('./sample.png', 'utf8'),
-    asset: fs.readFileSync('./sample.html', 'utf8')
+    thumbnail: fs.readFileSync('src/sample.png', 'utf8'),
+    asset: fs.readFileSync('src/sample.html', 'utf8')
  }
 
  const mintNft = async (data: MintNftParams) => {
